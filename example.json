@@ -1,0 +1,107 @@
+{
+  "name": "Ancient Red Dragon",
+  "type": "Dragon",
+  "alignment": "Chaotic Evil",
+  "armor_class": 22,
+  "hit_points": 546,
+  "hit_dice": "28d12+252",
+  "speed": {
+    "walk": 40,
+    "fly": 80,
+    "swim": 40
+  },
+  "ability_scores": {
+    "strength": 30,
+    "dexterity": 10,
+    "constitution": 29,
+    "intelligence": 18,
+    "wisdom": 15,
+    "charisma": 23
+  },
+  "saving_throws": {
+    "strength": 17,
+    "dexterity": 7,
+    "constitution": 16,
+    "intelligence": 11,
+    "wisdom": 10,
+    "charisma": 13
+  },
+  "skills": {
+    "perception": 16,
+    "stealth": 7
+  },
+  "damage_resistances": [],
+  "damage_immunities": ["fire"],
+  "damage_vulnerabilities": [],
+  "condition_immunities": [],
+  "senses": {
+    "blindsight": 60,
+    "darkvision": 120,
+    "passive_perception": 26
+  },
+  "languages": ["Common", "Draconic"],
+  "challenge_rating": 24,
+  "special_traits": [
+    {
+      "name": "Legendary Resistance",
+      "description": "If the dragon fails a saving throw, it can choose to succeed instead."
+    },
+    {
+      "name": "Fire Aura",
+      "description": "At the start of each of the dragon's turns, each creature within 10 feet of it takes 10 (3d6) fire damage, and flammable objects in the aura that aren't being worn or carried ignite."
+    }
+  ],
+  "actions": [
+    {
+      "name": "Multiattack",
+      "description": "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws."
+    },
+    {
+      "name": "Bite",
+      "description": "Melee Weapon Attack: +17 to hit, reach 15 ft., one target. Hit: 21 (2d10 + 10) piercing damage plus 14 (4d6) fire damage."
+    },
+    {
+      "name": "Claw",
+      "description": "Melee Weapon Attack: +17 to hit, reach 10 ft., one target. Hit: 17 (2d6 + 10) slashing damage."
+    },
+    {
+      "name": "Tail",
+      "description": "Melee Weapon Attack: +17 to hit, reach 20 ft., one target. Hit: 19 (2d8 + 10) bludgeoning damage."
+    },
+    {
+      "name": "Frightful Presence",
+      "description": "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 21 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, with disadvantage if the dragon is within line of sight, ending the effect on itself on a success."
+    },
+    {
+      "name": "Fire Breath",
+      "description": "The dragon exhales fire in an 90-foot cone. Each creature in that area must make a DC 24 Dexterity saving throw, taking 91 (26d6) fire damage on a failed save, or half as much damage on a successful one."
+    }
+  ],
+  "legendary_actions": [
+    {
+      "name": "Detect",
+      "description": "The dragon makes a Wisdom (Perception) check."
+    },
+    {
+      "name": "Tail Attack",
+      "description": "The dragon makes a tail attack."
+    },
+    {
+      "name": "Wing Attack (Costs 2 Actions)",
+      "description": "The dragon beats its wings. Each creature within 15 feet of the dragon must succeed on a DC 25 Dexterity saving throw or take 15 (2d6 + 8) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."
+    }
+  ],
+  "reactions": [],
+  "lair_actions": [
+    {
+      "name": "Magma Eruption",
+      "description": "Magma erupts from a point on the ground the dragon can see within 120 feet of it, creating a 20-foot-high, 5-foot-radius geyser. Each creature in the geyser's area must make a DC 15 Dexterity saving throw, taking 21 (6d6) fire damage on a failed save, or half as much damage on a successful one."
+    }
+  ],
+  "regional_effects": [
+    {
+      "name": "Volcanic Activity",
+      "description": "The region containing the dragon's lair is warped by the dragon's magic, creating the following effects: Small earthquakes are common within 6 miles of the dragon's lair."
+    }
+  ]
+}
