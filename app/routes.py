@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, send_file, render_template_string
+from flask import Blueprint, request, jsonify, send_file, render_template, url_for
 from jsonschema import validate, ValidationError
 from xhtml2pdf import pisa
 import io
@@ -145,59 +145,7 @@ def confirm_monster():
     except ValidationError as e:
         return jsonify({"error": e.message}), 400
 
-    html_template = """
-    <html>
-    <head><title>{{ data.name }} - Monster Stat Block</title></head>
-    <body>
-        <h1>{{ data.name }}</h1>
-        <p><strong>Type:</strong> {{ data.type }}</p>
-        <p><strong>Alignment:</strong> {{ data.alignment }}</p>
-        <p><strong>Armor Class:</strong> {{ data.armor_class }}</p>
-        <p><strong>Hit Points:</strong> {{ data.hit_points }} ({{ data.hit_dice }})</p>
-        <p><strong>Speed:</strong> Walk {{ data.speed.walk }} ft, Fly {{ data.speed.fly }} ft, Swim {{ data.speed.swim }} ft</p>
-        <h2>Ability Scores</h2>
-        <ul>
-            <li><strong>Strength:</strong> {{ data.ability_scores.strength }}</li>
-            <li><strong>Dexterity:</strong> {{ data.ability_scores.dexterity }}</li>
-            <li><strong>Constitution:</strong> {{ data.ability_scores.constitution }}</li>
-            <li><strong>Intelligence:</strong> {{ data.ability_scores.intelligence }}</li>
-            <li><strong>Wisdom:</strong> {{ data.ability_scores.wisdom }}</li>
-            <li><strong>Charisma:</strong> {{ data.ability_scores.charisma }}</li>
-        </ul>
-        <h2>Special Traits</h2>
-        <ul>
-            {% for trait in data.special_traits %}
-                <li><strong>{{ trait.name }}:</strong> {{ trait.description }}</li>
-            {% endfor %}
-        </ul>
-        <h2>Actions</h2>
-        <ul>
-            {% for action in data.actions %}
-                <li><strong>{{ action.name }}:</strong> {{ action.description }}</li>
-            {% endfor %}
-        </ul>
-        <h2>Legendary Actions</h2>
-        <ul>
-            {% for legendary_action in data.legendary_actions %}
-                <li><strong>{{ legendary_action.name }}:</strong> {{ legendary_action.description }}</li>
-            {% endfor %}
-        </ul>
-        <h2>Lair Actions</h2>
-        <ul>
-            {% for lair_action in data.lair_actions %}
-                <li><strong>{{ lair_action.name }}:</strong> {{ lair_action.description }}</li>
-            {% endfor %}
-        </ul>
-        <h2>Regional Effects</h2>
-        <ul>
-            {% for regional_effect in data.regional_effects %}
-                <li><strong>{{ regional_effect.name }}:</strong> {{ regional_effect.description }}</li>
-            {% endfor %}
-        </ul>
-    </body>
-    </html>
-    """
-    rendered_html = render_template_string(html_template, data=data)
+    rendered_html = render_template('template.html', data=data)
 
     pdf_output = io.BytesIO()
     pisa_status = pisa.CreatePDF(io.StringIO(rendered_html), dest=pdf_output)
